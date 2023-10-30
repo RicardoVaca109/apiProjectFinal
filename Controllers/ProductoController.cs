@@ -30,11 +30,11 @@ namespace apiBodega.Controllers
         [HttpGet("{ProveedorId}")]
         public async Task<IActionResult> Get(int ProveedorId)
         {
-            Productos producto = await _db.products.FirstOrDefaultAsync(x => x.ProveedorId == ProveedorId);
-            if (producto != null) {
-                return Ok(producto);
+            List<Productos> productos = await _db.products.Where(x => x.ProveedorId == ProveedorId).ToListAsync();
+            if (productos.Count > 0) {
+                return Ok(productos);
             }
-            return BadRequest();
+            return BadRequest("No se encontraron productos para el ProveedorID proporcionado.");
         }
 
         // POST api/<ProductoController>
