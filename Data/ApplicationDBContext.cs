@@ -13,7 +13,7 @@ namespace apiBodega.Data
         }
         public DbSet<User> usuarios { get; set; }
         public DbSet<Empresa> empresas { get; set; }
-        public DbSet<Productos> products { get; set; }
+        public DbSet<Producto> products { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
@@ -50,8 +50,8 @@ namespace apiBodega.Data
                     Resumen = "Empresa que vende componentes eléctricos"
 
                 });
-            modelBuilder.Entity<Productos>().HasData(
-                new Productos
+            modelBuilder.Entity<Producto>().HasData(
+                new Producto
                 {
                     ProductoId = 1,
                     Nombre = "Clorox",
@@ -61,7 +61,7 @@ namespace apiBodega.Data
                     ProveedorId = 1,
 
                 },
-                new Productos
+                new Producto
                 {
                     ProductoId = 2,
                     Nombre = "Lava",
@@ -71,7 +71,7 @@ namespace apiBodega.Data
                     ProveedorId = 1,
 
                 },
-                new Productos
+                new Producto
                 {
                     ProductoId = 3,
                     Nombre = " Kit Brochas antiestáticas",
@@ -82,7 +82,7 @@ namespace apiBodega.Data
 
 
                 },
-                new Productos
+                new Producto
                 {
                     ProductoId = 4,
                     Nombre = "Alcohol Isopropilico",

@@ -22,7 +22,7 @@ namespace apiBodega.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            List<Productos> productos =await _db.products.ToListAsync();
+            List<Producto> productos =await _db.products.ToListAsync();
             return Ok(productos);
         }
 
@@ -30,7 +30,7 @@ namespace apiBodega.Controllers
         [HttpGet("{ProveedorId}")]
         public async Task<IActionResult> Get(int ProveedorId)
         {
-            List<Productos> productos = await _db.products.Where(x => x.ProveedorId == ProveedorId).ToListAsync();
+            List<Producto> productos = await _db.products.Where(x => x.ProveedorId == ProveedorId).ToListAsync();
             if (productos.Count > 0) {
                 return Ok(productos);
             }
@@ -39,9 +39,9 @@ namespace apiBodega.Controllers
 
         // POST api/<ProductoController>
         [HttpPost]
-        public async Task<IActionResult>Post([FromBody] Productos producto)
+        public async Task<IActionResult>Post([FromBody] Producto producto)
         {
-            Productos producto2 = await _db.products.FirstOrDefaultAsync(x => x.ProductoId == producto.ProductoId);
+            Producto producto2 = await _db.products.FirstOrDefaultAsync(x => x.ProductoId == producto.ProductoId);
             if(producto2 == null && producto != null) { 
                 await _db.products.AddAsync(producto);
                 await _db.SaveChangesAsync();
@@ -52,9 +52,9 @@ namespace apiBodega.Controllers
 
         // PUT api/<ProductoController>/5
         [HttpPut("{ProductoId}")]
-        public async Task<IActionResult>Put(int ProductoId, [FromBody] Productos producto)
+        public async Task<IActionResult>Put(int ProductoId, [FromBody] Producto producto)
         {
-            Productos producto2 = await _db.products.FirstOrDefaultAsync(x => x.ProductoId == ProductoId);
+            Producto producto2 = await _db.products.FirstOrDefaultAsync(x => x.ProductoId == ProductoId);
             if (producto2 != null)
             {
                 producto2.Nombre = producto.Nombre != null ? producto.Nombre : producto2.Nombre;
@@ -73,7 +73,7 @@ namespace apiBodega.Controllers
         [HttpDelete("{ProductoId}")]
         public async Task<IActionResult> Delete(int ProductoId)
         {
-            Productos producto = await _db.products.FirstOrDefaultAsync(x => x.ProductoId == ProductoId);
+            Producto producto = await _db.products.FirstOrDefaultAsync(x => x.ProductoId == ProductoId);
             if (producto != null)
             {
                 _db.products.Remove(producto);

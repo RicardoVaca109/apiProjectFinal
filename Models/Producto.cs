@@ -2,7 +2,7 @@
 
 namespace apiBodega.Models
 {
-    public class Productos
+    public class Producto
     {
         [Key]
         public int ProductoId { get; set; }
