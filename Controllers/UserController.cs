@@ -37,20 +37,38 @@ namespace apiBodega.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] User userToValidate)
         {
+            if (userToValidate != null)
+            {
+                
+                var existingUser = await _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == userToValidate.UserMail);
+
+                if (existingUser != null)
+                {
+                    return Ok("El usuario ya existe.");
+                }
+                else
+                {
+                    return NotFound("El usuario no existe.");
+                }
+            }
+
+            return BadRequest("Los datos del usuario son inválidos.");
+        }
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateUser([FromBody] User newUser)
+        {
+            User nuevouser = await _db.usuarios.FirstOrDefaultAsync(x => x.IdUser == newUser.IdUser);
+            if (nuevouser == null && newUser !=null)
+            {
+                await _db.usuarios.AddAsync(newUser);
+                await _db.SaveChangesAsync();
+                return Ok(newUser);
+            }
+
+            return BadRequest("No se creo usuario");
         }
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

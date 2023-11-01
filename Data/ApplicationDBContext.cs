@@ -23,7 +23,7 @@ namespace apiBodega.Data
                     IdUser = 1,
                     UserMail = "rick1234@gmail.com",
                     UserPassword = "admin4321",
-                    IsBlocked = false
+                    
                 },
                 
                 new User
@@ -31,7 +31,7 @@ namespace apiBodega.Data
                     IdUser = 2,
                     UserMail = "cris1234@gmail.com",
                     UserPassword = "admin1234",
-                    IsBlocked = false
+                    
                 });
 
             modelBuilder.Entity<Empresa>().HasData(

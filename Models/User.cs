@@ -10,8 +10,7 @@ namespace apiBodega.Models
         public string UserMail { get; set; }
         [Required]
         public string UserPassword { get; set; }
-        
-        public bool IsBlocked { get; set; }
+       
 
     }
 }
