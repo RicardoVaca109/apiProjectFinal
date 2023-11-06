@@ -69,6 +69,18 @@ namespace apiBodega.Controllers
 
             return BadRequest("No se creo usuario");
         }
+        [HttpDelete("{IdUser}")]
+        public async Task<IActionResult> Delete(int IdUser)
+        {
+            User usuario = await _db.usuarios.FirstOrDefaultAsync(x => x.IdUser == IdUser);
+            if (usuario != null)
+            {
+                _db.usuarios.Remove(usuario);
+                await _db.SaveChangesAsync();
+                return NoContent();
+            }
+            return BadRequest();
+        }
 
     }
 }

@@ -24,6 +24,15 @@ namespace apiBodega.Controllers
             return Ok(business);
         }
 
+        [HttpGet("EmpresaID")]
+        public async Task<IActionResult> EmpresaID()
+        {
+            List<int> businessIDs = await _db.empresas
+                                              .Select(e => e.EmpresaID)
+                                              .ToListAsync();
+            return Ok(businessIDs);
+        }
+
         // GET api/<EmpresaController>/5
         [HttpGet("{EmpresaID}")]
         public async Task<IActionResult> Get(int EmpresaID)
