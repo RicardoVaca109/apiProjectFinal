@@ -29,7 +29,8 @@ namespace apiBodega.Controllers
         public async Task<IActionResult> Get(int IdUser)
         {
             User user = await _db.usuarios.FirstOrDefaultAsync(x => x.IdUser == IdUser);
-            if (user != null) {
+            if (user != null)
+            {
                 return Ok(user);
             }
             return BadRequest();
@@ -41,7 +42,7 @@ namespace apiBodega.Controllers
         {
             if (userToValidate != null)
             {
-                
+
                 var existingUser = await _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == userToValidate.UserMail);
 
                 if (existingUser != null)
@@ -56,11 +57,12 @@ namespace apiBodega.Controllers
 
             return BadRequest("Los datos del usuario son inválidos.");
         }
+
         [HttpPost("create")]
         public async Task<IActionResult> CreateUser([FromBody] User newUser)
         {
             User nuevouser = await _db.usuarios.FirstOrDefaultAsync(x => x.IdUser == newUser.IdUser);
-            if (nuevouser == null && newUser !=null)
+            if (nuevouser == null && newUser != null)
             {
                 await _db.usuarios.AddAsync(newUser);
                 await _db.SaveChangesAsync();
@@ -69,6 +71,7 @@ namespace apiBodega.Controllers
 
             return BadRequest("No se creo usuario");
         }
+
         [HttpDelete("{IdUser}")]
         public async Task<IActionResult> Delete(int IdUser)
         {
