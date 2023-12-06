@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "apiBodega20231127110705",
+      "defaultValue": "apiBodega20231205124415",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

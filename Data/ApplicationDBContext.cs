@@ -1,5 +1,7 @@
 ﻿using apiBodega.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Common;
 
 namespace apiBodega.Data
@@ -14,6 +16,7 @@ namespace apiBodega.Data
         public DbSet<User> usuarios { get; set; }
         public DbSet<Empresa> empresas { get; set; }
         public DbSet<Producto> products { get; set; }
+        public DbSet<Pedidos>  pedidos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
@@ -92,7 +95,19 @@ namespace apiBodega.Data
                     ProveedorId = 2,
                 }
                 );
-        }
+            modelBuilder.Entity<Pedidos>().HasData(
+                
+                new Pedidos
+                {
+                    ClienteId = 1,
+                    CtdProducto = 54,
+                    ProveedorId = 2,
+                }
+                
+                
+                
+                );
+            }
         
     }
 }
