@@ -42,10 +42,10 @@ namespace apiBodega.Controllers
         {
             if (userToValidate != null)
             { 
-                var existingUser = await _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == userToValidate.UserMail && u.UserPassword == userToValidate.UserPassword);
+                var existingUser =  _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == userToValidate.UserMail && u.UserPassword == userToValidate.UserPassword);
                 if (existingUser != null)
                 {
-                    return Ok(existingUser);
+                    return Ok(new {userToValidate=existingUser});
                 }
                 else
                 {
