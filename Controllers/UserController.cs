@@ -41,13 +41,11 @@ namespace apiBodega.Controllers
         public async Task<IActionResult> Post([FromBody] User userToValidate)
         {
             if (userToValidate != null)
-            {
-
-                var existingUser = await _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == userToValidate.UserMail);
-
+            { 
+                var existingUser = await _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == userToValidate.UserMail && u.UserPassword == userToValidate.UserPassword);
                 if (existingUser != null)
                 {
-                    return Ok("El usuario ya existe.");
+                    return Ok(existingUser);
                 }
                 else
                 {
@@ -69,7 +67,7 @@ namespace apiBodega.Controllers
                 return Ok(newUser);
             }
 
-            return BadRequest("No se creo usuario");
+            return BadRequest("No se creo correctamente el  usuario");
         }
 
         [HttpDelete("{IdUser}")]
@@ -80,10 +78,27 @@ namespace apiBodega.Controllers
             {
                 _db.usuarios.Remove(usuario);
                 await _db.SaveChangesAsync();
-                return NoContent();
+                return Ok("Usuario Eliminado Correctamente");
             }
-            return BadRequest();
+            return BadRequest("No se logró eliminar al usuario");
         }
+
+        /*[HttpGet]
+        [Route("api/User/VerifyCredentials")]
+        public async Task<IActionResult> VerifyCredentials(string usermail, string userpassword)
+        {
+            // Lógica para verificar las credenciales en tu base de datos o sistema de autenticación
+            var user = _db.usuarios.FirstAsync(u=> u.UserMail == usermail && u.UserPassword==userpassword);
+
+            if (user != null && usermail==)
+            {
+                return Ok("El usuario SI existe."); // Retorna el usuario si las credenciales son correctas
+            }
+            else
+            {
+                return NotFound("No existe usuario"); // Retorna un código 404 si las credenciales son incorrectas o el usuario no existe
+            }*/
+        
 
     }
 }
