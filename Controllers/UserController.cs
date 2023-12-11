@@ -38,22 +38,21 @@ namespace apiBodega.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] User userToValidate)
+        public async Task<IActionResult> Post([FromBody] User usuario)
         {
-            if (userToValidate != null)
-            { 
-                var existingUser =  _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == userToValidate.UserMail && u.UserPassword == userToValidate.UserPassword);
-                if (existingUser != null)
-                {
-                    return Ok(new {userToValidate=existingUser});
-                }
-                else
-                {
-                    return NotFound("El usuario no existe.");
-                }
-            }
 
-            return BadRequest("Los datos del usuario son inválidos.");
+            // En caso de que el framework no valide que ya exista un ID que ya existe debemos validar nosotros
+            User existingUser = await _db.usuarios.FirstOrDefaultAsync(x => x.UserMail== usuario.UserMail && x.UserPassword == usuario.UserPassword);
+
+            //var existingUser = _db.usuarios.FirstOrDefaultAsync(u => u.UserMail == existingUser.UserMail && u.UserPassword == existingUser.UserPassword);
+            if (existingUser != null)
+            {
+                return Ok(existingUser);
+            }
+            else
+            {
+                return NotFound("El usuario no existe.");
+            }
         }
 
         [HttpPost("create")]
