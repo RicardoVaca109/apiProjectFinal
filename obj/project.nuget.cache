@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9M6/PFDFuzJXujFqO2P4hnxRy2/+3GXCmnVyB2vUIaFjS8pMS3W8ef9tldHnMtaBtAiZKHGEcNvdt2UqVGYhzw==",
+  "dgSpecHash": "SaHBFQ0MHWU/Y9PbAYwyRZJeI/emIxP+nZPW+f++ZZc0Vywua/Q2msnfKLAuM/E5ur1JchScMK8CyVNpJcL7TA==",
   "success": true,
-  "projectFilePath": "R:\\prograFinal\\apiBodega\\apiBodega.csproj",
+  "projectFilePath": "R:\\apiFinalBodega\\apiBodega.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USUARIO\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\USUARIO\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

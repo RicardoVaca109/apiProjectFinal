@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "R:\\prograFinal\\apiBodega\\apiBodega.csproj": {}
+    "R:\\apiFinalBodega\\apiBodega.csproj": {}
   },
   "projects": {
-    "R:\\prograFinal\\apiBodega\\apiBodega.csproj": {
+    "R:\\apiFinalBodega\\apiBodega.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "R:\\prograFinal\\apiBodega\\apiBodega.csproj",
+        "projectUniqueName": "R:\\apiFinalBodega\\apiBodega.csproj",
         "projectName": "apiBodega",
-        "projectPath": "R:\\prograFinal\\apiBodega\\apiBodega.csproj",
+        "projectPath": "R:\\apiFinalBodega\\apiBodega.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "R:\\prograFinal\\apiBodega\\obj\\",
+        "outputPath": "R:\\apiFinalBodega\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
